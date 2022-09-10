@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
+const port = 3000;
 
 
 const date = require(__dirname+"/date.js");
@@ -13,7 +14,8 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://admin-vivek:Test%40123@cluster0.ceyplo4.mongodb.net/todoListDB");
+
+mongoose.connect("mongodb://localhost:27017/todoListDB");
 
 const itemsSchema = {
     name: String
@@ -131,11 +133,11 @@ app.get("/about", (req, res) => {
     res.render("about");
 });
 
-let port = process.env.PORT;
-if(port == null || prot == "") {
-    port = 3000;
-}
-app.listen(port);
+
+// if(port == null || prot == "") {
+//     port = 3000;
+// }
+// app.listen(port);
 
 
 app.listen(port, () => {
