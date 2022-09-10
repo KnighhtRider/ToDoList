@@ -131,7 +131,13 @@ app.get("/about", (req, res) => {
     res.render("about");
 });
 
+let port = process.env.PORT;
+if(port == null || prot == "") {
+    port = 3000;
+}
+app.listen(port);
 
-app.listen(3000, () => {
+
+app.listen(port, () => {
     console.log("Server Started on port 3000.");
 });
